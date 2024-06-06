@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+let title = "Markdown"
+
+const mdNotes = await Astro.glob("./*md")
+
+---
+
+<BaseLayout title={title}>
+
+    <h2>Multiple MD Files</h2>
+
+    <ul>
+        {mdNotes.map( (note) => ( <li>  <a href={note.url}>{note.frontmatter.title} </a>  </li>)) }
+    </ul>
+
+</BaseLayout>
+

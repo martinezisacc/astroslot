@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+
+let title = "Markdown";
+
+// Import markdown as a component
+import { Content as MyMarkdownComponent } from "../../components/markdown000.md";
+
+// Import multiple markdown files
+// Import multiple markdown (Array)
+const myMarkdownFiles = await Astro.glob("./*md");
+
+
+---
+<BaseLayout title={title}>
+
+    <!-- <h2>Markdown Component Example</h2>
+    <MyMarkdownComponent/> -->
+
+    <h2>Markdown Multiple Files</h2>
+    
+    {myMarkdownFiles.map( (file) => 
+        (<li> <a href={file.url}> 
+            {file.frontmatter.description}
+        </a> </li>) ) }
+
+</BaseLayout>
